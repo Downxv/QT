@@ -33,7 +33,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>1</number>
+      <number>6</number>
      </property>
      <widget class="QWidget" name="tab">
       <attribute name="title">
@@ -524,7 +524,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>170</x>
@@ -533,7 +533,7 @@
          <height>41</height>
         </rect>
        </property>
-       <layout class="QHBoxLayout" name="horizontalLayout_10">
+       <layout class="QHBoxLayout" name="horizontalLayout_10" stretch="1,0,2,1,3">
         <item>
          <spacer name="horizontalSpacer_4">
           <property name="orientation">
@@ -584,11 +584,664 @@
        </layout>
       </widget>
      </widget>
+     <widget class="QWidget" name="tab_2">
+      <attribute name="title">
+       <string>Tab 4</string>
+      </attribute>
+      <widget class="QListWidget" name="listWidget_2">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>70</y>
+         <width>300</width>
+         <height>501</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(170, 170, 0);</string>
+       </property>
+      </widget>
+      <widget class="QTreeWidget" name="treeWidget">
+       <property name="geometry">
+        <rect>
+         <x>320</x>
+         <y>70</y>
+         <width>300</width>
+         <height>501</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(0, 255, 127);</string>
+       </property>
+       <column>
+        <property name="text">
+         <string notr="true">1</string>
+        </property>
+       </column>
+      </widget>
+      <widget class="QTableWidget" name="tableWidget">
+       <property name="geometry">
+        <rect>
+         <x>630</x>
+         <y>70</y>
+         <width>300</width>
+         <height>501</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 85, 255);</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="tab_3">
+      <attribute name="title">
+       <string>Tab 5</string>
+      </attribute>
+      <widget class="Line" name="line">
+       <property name="geometry">
+        <rect>
+         <x>7</x>
+         <y>90</y>
+         <width>931</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+      <widget class="QGroupBox" name="groupBox_3">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>130</y>
+         <width>821</width>
+         <height>251</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string>滑动</string>
+       </property>
+       <widget class="QDial" name="dial">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>40</y>
+          <width>221</width>
+          <height>191</height>
+         </rect>
+        </property>
+        <property name="notchesVisible">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QScrollBar" name="horizontalScrollBar">
+        <property name="geometry">
+         <rect>
+          <x>320</x>
+          <y>50</y>
+          <width>451</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+       <widget class="QSlider" name="horizontalSlider">
+        <property name="geometry">
+         <rect>
+          <x>320</x>
+          <y>150</y>
+          <width>451</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QProgressBar" name="progressBar">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>410</y>
+         <width>711</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="value">
+        <number>24</number>
+       </property>
+      </widget>
+      <widget class="QWidget" name="layoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>40</y>
+         <width>177</width>
+         <height>26</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_11">
+        <item>
+         <widget class="QSpinBox" name="spinBox">
+          <property name="suffix">
+           <string>KG</string>
+          </property>
+          <property name="prefix">
+           <string>&amp;</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QDoubleSpinBox" name="doubleSpinBox">
+          <property name="prefix">
+           <string>$</string>
+          </property>
+          <property name="suffix">
+           <string>&amp;</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="layoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>40</y>
+         <width>256</width>
+         <height>26</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_12">
+        <item>
+         <widget class="QPushButton" name="pushButton_4">
+          <property name="text">
+           <string>居左</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="autoExclusive">
+           <bool>true</bool>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_5">
+          <property name="text">
+           <string>居中</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+          <property name="autoExclusive">
+           <bool>true</bool>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_6">
+          <property name="text">
+           <string>居右</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="autoExclusive">
+           <bool>true</bool>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="layoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>540</y>
+         <width>150</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_13">
+        <item>
+         <widget class="QRadioButton" name="radioButton_4">
+          <property name="text">
+           <string>显示%</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="radioButton_5">
+          <property name="text">
+           <string>显示值</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="layoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>480</y>
+         <width>299</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_14">
+        <item>
+         <widget class="QCheckBox" name="checkBox_4">
+          <property name="text">
+           <string>textvisible</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="checkBox_5">
+          <property name="text">
+           <string>invertedappearance</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="tab_5">
+      <attribute name="title">
+       <string>Tab 6</string>
+      </attribute>
+      <widget class="QGroupBox" name="groupBox_4">
+       <property name="geometry">
+        <rect>
+         <x>490</x>
+         <y>20</y>
+         <width>431</width>
+         <height>221</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string>定时器</string>
+       </property>
+       <widget class="QWidget" name="layoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>30</y>
+          <width>355</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_9">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_16">
+           <item>
+            <widget class="QPushButton" name="pushButton_7">
+             <property name="text">
+              <string>开始</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_8">
+             <property name="text">
+              <string>停止</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_9">
+             <property name="text">
+              <string>动态创建单次定时器</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_17">
+           <item>
+            <widget class="QLabel" name="label_3">
+             <property name="text">
+              <string>定时周期</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSpinBox" name="spinBox_2">
+             <property name="suffix">
+              <string>MS</string>
+             </property>
+             <property name="maximum">
+              <number>99999</number>
+             </property>
+             <property name="singleStep">
+              <number>1000</number>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="radioButton_6">
+             <property name="text">
+              <string>连续定时</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="radioButton_7">
+             <property name="text">
+              <string>单次定时</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QGroupBox" name="groupBox_5">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>280</y>
+         <width>891</width>
+         <height>271</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string>当前时间</string>
+       </property>
+       <widget class="QWidget" name="layoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>100</y>
+          <width>671</width>
+          <height>161</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_18">
+         <item>
+          <widget class="QLCDNumber" name="lcdNumber">
+           <property name="digitCount">
+            <number>2</number>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLCDNumber" name="lcdNumber_2">
+           <property name="digitCount">
+            <number>2</number>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLCDNumber" name="lcdNumber_3">
+           <property name="digitCount">
+            <number>2</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="layoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>20</y>
+         <width>470</width>
+         <height>230</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_8">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_15">
+          <item>
+           <widget class="QTimeEdit" name="timeEdit">
+            <property name="displayFormat">
+             <string>hh:mm:ss AP</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QDateEdit" name="dateEdit"/>
+          </item>
+          <item>
+           <widget class="QDateTimeEdit" name="dateTimeEdit">
+            <property name="displayFormat">
+             <string>MM/dd/yyyy hh:mm:ss AP</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QCalendarWidget" name="calendarWidget"/>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="tab_6">
+      <attribute name="title">
+       <string>Tab 7</string>
+      </attribute>
+      <widget class="QGroupBox" name="groupBox_7">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>270</y>
+         <width>781</width>
+         <height>271</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string>显示信息</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_12">
+        <item>
+         <widget class="QPushButton" name="pushButton_13">
+          <property name="text">
+           <string>清空文本</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPlainTextEdit" name="plainTextEdit_3"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="layoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>20</y>
+         <width>781</width>
+         <height>211</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_19">
+        <property name="spacing">
+         <number>5</number>
+        </property>
+        <item>
+         <widget class="QGroupBox" name="groupBox_6">
+          <property name="title">
+           <string>简单combobox</string>
+          </property>
+          <widget class="QWidget" name="layoutWidget">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>50</y>
+             <width>256</width>
+             <height>58</height>
+            </rect>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_10">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_20">
+              <item>
+               <widget class="QPushButton" name="pushButton_10">
+                <property name="text">
+                 <string>初始化列表</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_11">
+                <property name="text">
+                 <string>清空列表</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QCheckBox" name="checkBox_6">
+                <property name="text">
+                 <string>可编辑</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboBox">
+              <item>
+               <property name="text">
+                <string>南昌</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>杭州</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox_8">
+          <property name="title">
+           <string>带用户数据的combobox</string>
+          </property>
+          <widget class="QWidget" name="layoutWidget">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>40</y>
+             <width>341</width>
+             <height>121</height>
+            </rect>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_11">
+            <item>
+             <widget class="QPushButton" name="pushButton_12">
+              <property name="text">
+               <string>初始化城市和区号</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboBox_2"/>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="tab_7">
+      <attribute name="title">
+       <string>Tab 8</string>
+      </attribute>
+     </widget>
     </widget>
    </item>
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>radioButton_5</tabstop>
+  <tabstop>open</tabstop>
+  <tabstop>plainTextEdit</tabstop>
+  <tabstop>setfont</tabstop>
+  <tabstop>setcolor</tabstop>
+  <tabstop>getDateTime</tabstop>
+  <tabstop>save</tabstop>
+  <tabstop>lineEdit</tabstop>
+  <tabstop>BROWER</tabstop>
+  <tabstop>cancel</tabstop>
+  <tabstop>comfirm</tabstop>
+  <tabstop>first</tabstop>
+  <tabstop>choice</tabstop>
+  <tabstop>second</tabstop>
+  <tabstop>result</tabstop>
+  <tabstop>compute</tabstop>
+  <tabstop>customdialog</tabstop>
+  <tabstop>openweb</tabstop>
+  <tabstop>listWidget</tabstop>
+  <tabstop>showdir</tabstop>
+  <tabstop>item</tabstop>
+  <tabstop>add</tabstop>
+  <tabstop>delete_2</tabstop>
+  <tabstop>newscreenshot</tabstop>
+  <tabstop>savescreenshot</tabstop>
+  <tabstop>loadfromfile</tabstop>
+  <tabstop>loadfrommemery</tabstop>
+  <tabstop>plainTextEdit_2</tabstop>
+  <tabstop>checkBox</tabstop>
+  <tabstop>checkBox_2</tabstop>
+  <tabstop>checkBox_3</tabstop>
+  <tabstop>radioButton</tabstop>
+  <tabstop>radioButton_2</tabstop>
+  <tabstop>radioButton_3</tabstop>
+  <tabstop>pushButton</tabstop>
+  <tabstop>pushButton_2</tabstop>
+  <tabstop>pushButton_3</tabstop>
+  <tabstop>listWidget_2</tabstop>
+  <tabstop>treeWidget</tabstop>
+  <tabstop>tableWidget</tabstop>
+  <tabstop>spinBox</tabstop>
+  <tabstop>doubleSpinBox</tabstop>
+  <tabstop>pushButton_4</tabstop>
+  <tabstop>pushButton_5</tabstop>
+  <tabstop>pushButton_6</tabstop>
+  <tabstop>dial</tabstop>
+  <tabstop>horizontalSlider</tabstop>
+  <tabstop>checkBox_4</tabstop>
+  <tabstop>checkBox_5</tabstop>
+  <tabstop>radioButton_4</tabstop>
+  <tabstop>tabWidget</tabstop>
+ </tabstops>
  <resources>
   <include location="res.qrc"/>
  </resources>

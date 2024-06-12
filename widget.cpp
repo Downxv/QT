@@ -7,6 +7,8 @@
 #include<QDesktopWidget>
 #include<QClipboard>
 #include<QTableWidgetItem>
+#include<QSplitter>
+#include<QTime>
 
 Widget::Widget(QWidget *parent) :
     QWidget(parent),
@@ -27,6 +29,33 @@ Widget::Widget(QWidget *parent) :
     QObject::connect(ui->radioButton_2, SIGNAL(clicked()), this, SLOT(doColorSlot()));
     QObject::connect(ui->radioButton_3, SIGNAL(clicked()), this, SLOT(doColorSlot()));
     ui->label->setAlignment(Qt::AlignLeft | Qt::AlignCenter);
+    QSplitter* splitter = new QSplitter(ui->tab_2);
+    splitter->addWidget(ui->listWidget_2);
+    splitter->addWidget(ui->tableWidget);
+    splitter->addWidget(ui->treeWidget);
+    ui->doubleSpinBox->setDecimals(3);
+    // ui->plainTextEdit_2->setReadOnly(true);
+    // ui->plainTextEdit_2->setEnabled(true);
+    ui->lineEdit->setClearButtonEnabled(true);
+    QObject::connect(ui->horizontalSlider, SIGNAL(valueChanged(int)), this, SLOT(doASlot(int)));
+    QObject::connect(ui->horizontalScrollBar, SIGNAL(valueChanged(int)), this, SLOT(doASlot(int)));
+    QObject::connect(ui->dial, SIGNAL(valueChanged(int)), this, SLOT(doASlot(int)));
+    qtimer = new QTimer(this);
+    qtimer->stop();
+    QObject::connect(qtimer, SIGNAL(timeout()), this, SLOT(do_timeout()));
+}
+
+void Widget::do_timeout(){
+    QTime tt = QTime::currentTime();
+    ui->lcdNumber->display(tt.hour());
+    ui->lcdNumber_2->display(tt.minute());
+    ui->lcdNumber_3->display(tt.second());
+
+    if(qtimer->isSingleShot()){
+        ui->pushButton_7->setEnabled(true);
+        ui->pushButton_8->setEnabled(false);
+        ui->pushButton_9->setEnabled(true);
+    }
 }
 
 Widget::~Widget()
@@ -78,6 +107,7 @@ void Widget::openFileSlot(){
             QTextStream in(file);
             QString ra = in.readAll();
             ui->plainTextEdit->setPlainText(ra);
+            ui->plainTextEdit->append("ok");
             file->close();
             delete file;
         }else{
@@ -243,4 +273,140 @@ void Widget::doColorSlot(){
         pt.setColor(QPalette::Text, Qt::blue);
     }
     ui->plainTextEdit_2->setPalette(pt);
+}
+
+void Widget::doASlot(int val){
+    ui->progressBar->setValue(val);
+}
+
+void Widget::on_checkBox_4_clicked(bool checked)
+{
+    ui->progressBar->setTextVisible(checked);
+}
+void Widget::on_checkBox_5_clicked(bool checked)
+{
+    ui->progressBar->setInvertedAppearance(checked);
+}
+
+
+void Widget::on_radioButton_4_clicked()
+{
+    ui->progressBar->setFormat("%p%");
+}
+
+void Widget::on_radioButton_5_clicked()
+{
+    ui->progressBar->setFormat("%v");
+}
+
+void Widget::on_radioButton_4_clicked(bool checked)
+{
+
+}
+
+void Widget::on_radioButton_5_clicked(bool checked)
+{
+
+}
+
+void Widget::on_timeEdit_userTimeChanged(const QTime &time)
+{
+   QDate qd = ui->dateEdit->date();
+   ui->dateTimeEdit->setDate(qd);
+   ui->dateTimeEdit->setTime(time);
+   qDebug() << time.toString("HH:mm:ss");
+}
+
+void Widget::on_dateEdit_userDateChanged(const QDate &date)
+{
+    QTime time = ui->timeEdit->time();
+    ui->dateTimeEdit->setTime(time);
+    ui->dateTimeEdit->setDate(date);
+    qDebug() << date.toString("yyyy-MM-dd");
+}
+
+void Widget::on_dateTimeEdit_dateChanged(const QDate &date)
+{
+}
+
+void Widget::on_dateTimeEdit_dateTimeChanged(const QDateTime &dateTime)
+{
+    qDebug() << dateTime.toSecsSinceEpoch();
+}
+
+void Widget::on_calendarWidget_selectionChanged()
+{
+    qDebug() << ui->calendarWidget->selectedDate().toString("yyyy年MM月dd日");
+}
+
+void Widget::on_pushButton_7_clicked()
+{
+    qtimer->setInterval(ui->spinBox_2->value());
+    if(ui->radioButton_6->isChecked()){
+        qtimer->setSingleShot(false);
+    }else{
+        qtimer->setSingleShot(true);
+    }
+    qtimer->start();
+    ui->pushButton_7->setEnabled(false);
+    ui->pushButton_8->setEnabled(true);
+    ui->pushButton_9->setEnabled(false);
+}
+
+void Widget::on_pushButton_8_clicked()
+{
+    qtimer->stop();
+    ui->pushButton_7->setEnabled(true);
+    ui->pushButton_8->setEnabled(false);
+    ui->pushButton_9->setEnabled(true);
+}
+
+void Widget::on_pushButton_13_clicked()
+{
+    ui->plainTextEdit_3->clear();
+}
+
+void Widget::on_pushButton_10_clicked()
+{
+    ui->comboBox->clear();
+    for(int i = 0; i < 20; i++){
+        ui->comboBox->addItem(QString("Item%1").arg(i));
+    }
+}
+
+void Widget::on_checkBox_6_stateChanged(int arg1)
+{
+
+}
+
+void Widget::on_checkBox_6_clicked(bool checked)
+{
+    ui->comboBox->setEditable(checked);
+}
+
+void Widget::on_pushButton_11_clicked()
+{
+    ui->comboBox->clear();
+}
+
+void Widget::on_pushButton_12_clicked()
+{
+    ui->comboBox_2->clear();
+    QMap<QString, int> map;
+    map.insert("北京", 10);
+    map.insert("上海", 20);
+    foreach(const QString& str, map.keys()){
+        ui->comboBox_2->addItem(str, QString::number(map.value(str))); // 存入值
+    }
+}
+
+void Widget::on_comboBox_currentTextChanged(const QString &arg1)
+{
+    ui->plainTextEdit_3->appendPlainText(arg1);
+}
+
+void Widget::on_comboBox_2_currentIndexChanged(int index)
+{
+    QString str = ui->comboBox_2->currentText()+ui->comboBox_2->currentData().toString();
+    ui->plainTextEdit_3->appendPlainText(str);
 }

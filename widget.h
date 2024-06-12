@@ -19,6 +19,7 @@
 #include<QListWidget>
 #include<QStringList>
 #include<QTimer>
+#include<QElapsedTimer>
 #include<QSharedMemory>
 #include<QBuffer>
 #include<QDataStream>
@@ -74,11 +75,58 @@ private slots:
     void on_checkBox_3_clicked(bool checked);
 
     void doColorSlot();
+    void doASlot(int val);
+
+    void on_checkBox_4_clicked(bool checked);
+
+    void on_checkBox_5_clicked(bool checked);
+
+    void on_radioButton_4_clicked(bool checked);
+
+    void on_radioButton_5_clicked(bool checked);
+
+    void on_radioButton_4_clicked();
+
+    void on_radioButton_5_clicked();
+
+    void on_timeEdit_userTimeChanged(const QTime &time);
+
+    void on_dateEdit_userDateChanged(const QDate &date);
+
+    void on_dateTimeEdit_dateChanged(const QDate &date);
+
+    void on_dateTimeEdit_dateTimeChanged(const QDateTime &dateTime);
+
+    void on_calendarWidget_selectionChanged();
+
+    void do_timeout();
+
+    void on_pushButton_7_clicked();
+
+    void on_pushButton_8_clicked();
+
+    void on_pushButton_13_clicked();
+
+    void on_pushButton_10_clicked();
+
+    void on_checkBox_6_stateChanged(int arg1);
+
+    void on_checkBox_6_clicked(bool checked);
+
+    void on_pushButton_11_clicked();
+
+    void on_pushButton_12_clicked();
+
+    void on_comboBox_currentTextChanged(const QString &arg1);
+
+    void on_comboBox_2_currentIndexChanged(int index);
 
 private:
     Ui::Widget *ui;
     QPixmap pixmap;
     QSharedMemory* memory;
+    QTimer* qtimer;
+    QElapsedTimer* qcount;
 
 signals:
     ageChanged(int val);

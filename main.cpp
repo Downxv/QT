@@ -50,7 +50,12 @@ int main(int argc, char *argv[])
     // QHash
     // QMultiHash
     // QSet
-
+    // 字符串 QString
+    QString qst;
+    qst[0] = QChar('2');
+    qDebug() << qst.contains("1");
+    float ff = qst.toFloat();
+    qDebug() << QString::number(ff, 'f', 3);
 
     return a.exec();
 }
