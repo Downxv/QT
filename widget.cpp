@@ -9,6 +9,17 @@
 #include<QTableWidgetItem>
 #include<QSplitter>
 #include<QTime>
+#include<QMouseEvent>
+#include<QMimeData>
+#include<QFileInfo>
+#include<QDragEnterEvent>
+#include<QDropEvent>
+#include<QFileDialog>
+#include<QColorDialog>
+#include<QFontDialog>
+#include<QProgressDialog>
+#include<QElapsedTimer>
+#include<QInputDialog>
 
 Widget::Widget(QWidget *parent) :
     QWidget(parent),
@@ -43,6 +54,7 @@ Widget::Widget(QWidget *parent) :
     qtimer = new QTimer(this);
     qtimer->stop();
     QObject::connect(qtimer, SIGNAL(timeout()), this, SLOT(do_timeout()));
+    setAcceptDrops(true);
 }
 
 void Widget::do_timeout(){
@@ -409,4 +421,214 @@ void Widget::on_comboBox_2_currentIndexChanged(int index)
 {
     QString str = ui->comboBox_2->currentText()+ui->comboBox_2->currentData().toString();
     ui->plainTextEdit_3->appendPlainText(str);
+}
+
+void Widget::on_comboBox_2_currentIndexChanged(const QString &arg1)
+{
+
+}
+
+void Widget::on_pushButton_14_clicked()
+{
+    ui->listWidget_3->clear();
+}
+
+void Widget::on_pushButton_15_clicked()
+{
+    ui->listWidget_3->clear();
+    QVector<QString> qv;
+    qv.append("list1");
+    qv.append("list2");
+    QListWidgetItem* aitem;
+    foreach(const QString &qs, qv){
+        aitem = new QListWidgetItem();
+        aitem->setText(qs);
+        aitem->setFlags(Qt::ItemIsEditable|Qt::ItemIsSelectable|Qt::ItemIsUserCheckable);
+        ui->listWidget_3->addItem(aitem);
+    }
+}
+
+void Widget::on_pushButton_16_clicked()
+{
+    ui->treeWidget_2->clear();
+    QTreeWidgetItem* header = new QTreeWidgetItem();
+    header->setText(0, "文件和目录");
+    header->setText(1, "节点类型");
+    header->setTextAlignment(0, Qt::AlignCenter);
+    header->setTextAlignment(1, Qt::AlignCenter);
+    ui->treeWidget_2->setHeaderItem(header);
+    QTreeWidgetItem* item = new QTreeWidgetItem();
+    item->setText(0, "图片");
+    item->setText(1, "目录");
+    item->setTextAlignment(0, Qt::AlignCenter);
+    item->setTextAlignment(1, Qt::AlignCenter);
+    item->setCheckState(0, Qt::Checked);
+    ui->treeWidget_2->addTopLevelItem(item);
+
+}
+
+void Widget::mousePressEvent(QMouseEvent *event){
+    if(event->button() == Qt::LeftButton){
+        ui->label_5->move(event->pos());
+        QPoint pt = event->pos();
+        QPoint globpt = event->globalPos();
+        qDebug() << "pos.x " << pt.x() << "pos.y " << pt.y();
+        qDebug() << "globalPos.x " << globpt.x() << "gpobalPos.y " << globpt.y();
+    }
+}
+
+void Widget::keyPressEvent(QKeyEvent *event){
+    QPoint pt = ui->pushButton_17->pos();
+    if(event->key() == Qt::Key_A){
+        ui->pushButton_17->move(pt.x()-10, pt.y());
+    }
+    if(event->key() == Qt::Key_D){
+        ui->pushButton_17->move(pt.x()+10, pt.y());
+    }
+    if(event->key() == Qt::Key_W){
+        ui->pushButton_17->move(pt.x(), pt.y()-10);
+    }
+    if(event->key() == Qt::Key_S){
+        ui->pushButton_17->move(pt.x(), pt.y()+10);
+    }
+}
+
+void Widget::dragEnterEvent(QDragEnterEvent *event){
+    if(event->mimeData()->hasUrls()){
+        QString s = event->mimeData()->urls().at(0).fileName();
+        qDebug() << s;
+        QFileInfo filein(s);
+        QString ex = filein.suffix().toUpper();
+        if(ex == "PNG"){
+            event->acceptProposedAction();
+        }
+        else{
+            event->ignore();
+        }
+    }
+    else{
+        event->ignore();
+    }
+}
+
+void Widget::dropEvent(QDropEvent *event){
+    QString s = event->mimeData()->urls().at(0).path();
+    s = s.right(s.length()-1);
+    QPixmap px(s);
+    ui->label_6->setPixmap(px);
+    event->accept();
+}
+
+void Widget::on_pushButton_35_clicked()
+{
+    ui->plainTextEdit_4->clear();
+}
+
+void Widget::on_pushButton_18_clicked()
+{
+    QString curPath = QCoreApplication::applicationDirPath();
+    QString fn = QFileDialog::getOpenFileName(this, "选择一个文件", curPath, "图片(*.jpg);;所有文件(*.*)");
+    ui->plainTextEdit_4->appendPlainText(fn+"\n");
+}
+
+void Widget::on_pushButton_19_clicked()
+{
+    QString curPath = QCoreApplication::applicationDirPath();
+    QStringList fns = QFileDialog::getOpenFileNames(this, "选择多个文件", curPath, "图片(*.jpg);;所有文件(*.*)");
+    for(auto fn : fns){
+        ui->plainTextEdit_4->appendPlainText(fn+"\n");
+    }
+}
+
+void Widget::on_pushButton_20_clicked()
+{
+    QString curPath = QCoreApplication::applicationDirPath();
+    QString ed = QFileDialog::getExistingDirectory(this, "选择一个目录", curPath);
+    ui->plainTextEdit_4->appendPlainText(ed+"\n");
+}
+
+void Widget::on_pushButton_21_clicked()
+{
+    QString curPath = QCoreApplication::applicationDirPath();
+    QString sf = QFileDialog::getSaveFileName(this, "保存文件", curPath, "图片(*.jpg);;所有文件(*.*)");
+    ui->plainTextEdit_4->appendPlainText(sf+"\n");
+}
+
+void Widget::on_pushButton_22_clicked()
+{
+    QPalette p = ui->plainTextEdit_4->palette();
+    QColor c = p.color(QPalette::Text);
+    QColor qc = QColorDialog::getColor(c, this, "选择颜色");
+    if(qc.isValid()){
+        p.setColor(QPalette::Text, qc);
+        ui->plainTextEdit_4->setPalette(p);
+    }
+}
+
+void Widget::on_pushButton_23_clicked()
+{
+    QFont f = ui->plainTextEdit_4->font();
+    bool ok = false;
+    QFont qf = QFontDialog::getFont(&ok, f);
+    if(ok){
+        ui->plainTextEdit_4->setFont(qf);
+    }
+}
+
+void Widget::on_pushButton_24_clicked()
+{
+    QProgressDialog dp("正在复制文件..", "取消", 0, 200, this);
+    dp.setWindowTitle("复制文件");
+    dp.setWindowModality(Qt::WindowModal);
+    QElapsedTimer qe;
+    for(int i = 0; i <= 200; i++){
+        dp.setValue(i);
+        dp.setLabelText(QString::asprintf("正在复制文件 第%d个", i));
+        qe.start();
+        while(true){
+            if(qe.elapsed() > 30){
+                break;
+            }
+        }
+        if(dp.wasCanceled()){
+            break;
+        }
+    }
+}
+
+
+
+void Widget::on_pushButton_31_clicked()
+{
+    QString dt = "输入文字对话框";
+    QString tl = "请输入文件名";
+    QString ii = "新建文件.txt";
+    QLineEdit::EchoMode em = QLineEdit::Password;
+    bool ok = false;
+    QString t = QInputDialog::getText(this, dt, tl, em, ii, &ok);
+    if(ok && !t.isEmpty()){
+        ui->plainTextEdit_4->appendPlainText(t);
+    }
+}
+
+void Widget::on_pushButton_25_clicked()
+{
+    QString t = "question消息框";
+    QString s = "文件已修改，是否保存?";
+    int res = QMessageBox::question(this, t, s, QMessageBox::Yes|QMessageBox::No|QMessageBox::Cancel);
+    if(res == QMessageBox::Yes){
+        ui->plainTextEdit_4->appendPlainText("QMessageBox消息框，Yes被选中");
+    }
+}
+
+void Widget::on_pushButton_26_clicked()
+{
+    QString t = "infomation消息框";
+    QString s = "文件已保存";
+    QMessageBox::information(this, t, s);
+}
+
+void Widget::on_pushButton_27_clicked()
+{
+
 }

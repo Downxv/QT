@@ -121,6 +121,38 @@ private slots:
 
     void on_comboBox_2_currentIndexChanged(int index);
 
+    void on_comboBox_2_currentIndexChanged(const QString &arg1);
+
+    void on_pushButton_14_clicked();
+
+    void on_pushButton_15_clicked();
+
+    void on_pushButton_16_clicked();
+
+    void on_pushButton_35_clicked();
+
+    void on_pushButton_18_clicked();
+
+    void on_pushButton_19_clicked();
+
+    void on_pushButton_20_clicked();
+
+    void on_pushButton_21_clicked();
+
+    void on_pushButton_22_clicked();
+
+    void on_pushButton_23_clicked();
+
+    void on_pushButton_24_clicked();
+
+    void on_pushButton_31_clicked();
+
+    void on_pushButton_25_clicked();
+
+    void on_pushButton_26_clicked();
+
+    void on_pushButton_27_clicked();
+
 private:
     Ui::Widget *ui;
     QPixmap pixmap;
@@ -130,6 +162,16 @@ private:
 
 signals:
     ageChanged(int val);
+
+    // QWidget interface
+protected:
+    void mousePressEvent(QMouseEvent *event);
+    void keyPressEvent(QKeyEvent *event);
+
+    // QWidget interface
+protected:
+    void dragEnterEvent(QDragEnterEvent *event);
+    void dropEvent(QDropEvent *event);
 };
 
 #endif // WIDGET_H

@@ -2,5 +2,6 @@
     <qresource prefix="/rs">
         <file>a.gif</file>
         <file>c.jpg</file>
+        <file>a.jpg</file>
     </qresource>
 </RCC>
